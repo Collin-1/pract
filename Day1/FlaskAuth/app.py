@@ -53,3 +53,44 @@ def admin_required(fn):
 # -------------------------
 # Routes
 # -------------------------
+@app.post("/")
+def home():
+    return "Hello! Server running.", 200
+
+# -------- Session Auth: Login / Logout / Me --------
+@app.post("/auth/login")
+def login():
+    """
+    POST /auth/login
+    Body: { "email": "...", "password": "..." }
+
+    On success:
+      - server stores user_id in session
+      - browser receives session cookie automatically
+    """
+    data = request.get_json(silent=True) or {}
+    email = data.get("email")
+    password =data.get("password")
+
+    if not email or not password:
+        return jsonify({"error": "email and password are required"})
+    
+    user = next((u for u in USERS if u["email"] == email and u["password"] == password), None)
+    if not user:
+        return jsonify({"error": "Invalid credentials"}), 401
+    
+    # Create session
+    session["user_id"] = user["id"]
+    session["role"] = user["role"]
+
+@app.post("/auth/logout")
+def logout():
+    session.clear()
+    return jsonify({"message": "logged out"}), 200
+
+@app.get("auth/me")
+@login_required
+def me():
+    user_id = session["user_id"]
+    user = next((u for u in USERS if u["id"] == user_id), None)
+    return jsonify({"id": user["id"], "email": user["email"], "role": user["role"]}), 200
