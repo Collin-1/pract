@@ -53,7 +53,7 @@ def admin_required(fn):
 # -------------------------
 # Routes
 # -------------------------
-@app.post("/")
+@app.get("/")
 def home():
     return "Hello! Server running.", 200
 
@@ -88,9 +88,58 @@ def logout():
     session.clear()
     return jsonify({"message": "logged out"}), 200
 
-@app.get("auth/me")
+@app.get("/auth/me")
 @login_required
 def me():
     user_id = session["user_id"]
     user = next((u for u in USERS if u["id"] == user_id), None)
     return jsonify({"id": user["id"], "email": user["email"], "role": user["role"]}), 200
+
+# -------- Products --------
+@app.get("/api/products")
+def list_products():
+    return jsonify({"products": PRODUCTS}), 200
+
+@app.get("/api/products/<product_id>")
+def get_product(product_id: str):
+    product = next((p for p in PRODUCTS if p["id"] == product_id), None)
+    if not product:
+        return jsonify({"error": "Product not found"}), 404
+    return jsonify(product), 200
+
+# -------- Cart (requires login) --------
+@app.post("/api/carts")
+@login_required
+def create_cart():
+    cart_id=f"c{uuid4().hex[:8]}"
+    CARTS[cart_id] = []
+    return jsonify({"cart_id":cart_id, "items":[]}), 200
+
+@app.post("/app/carts/<cart_id>/items")
+@login_required
+def add_cart_item(cart_id: str):
+    data = request.get_json(silent=True) or {}
+    product_id = data.get("product_id")
+    qty = int(data.get("qty", 1))
+
+    if cart_id not in CARTS:
+        return jsonify({"error": "Cart not found"}), 404
+    
+    product = next((p for p in PRODUCTS if p["id"] == product_id), None)
+    if not product:
+        return jsonify({"error": "Product not found"}), 404
+    
+    if qty <= 0:
+        return jsonify({"error": "qty must be >= 1"}), 400
+    
+    if product["stock"] < qty:
+        return jsonify({"error": "Not enough stock"}), 409
+    
+    CARTS[cart_id].append({"product_id": product_id, "qty": qty})
+    return jsonify({"cart_id": cart_id, "items": CARTS[cart_id]}), 200
+
+if __name__ == "__main__":
+    app.run(host="127.0.0.1", port=5000, debug=True)
+    
+
+    
