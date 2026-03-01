@@ -73,7 +73,7 @@ def login():
     password =data.get("password")
 
     if not email or not password:
-        return jsonify({"error": "email and password are required"})
+        return jsonify({"error": "email and password are required"}), 400
     
     user = next((u for u in USERS if u["email"] == email and u["password"] == password), None)
     if not user:
@@ -120,7 +120,7 @@ def create_product():
     stock = data.get("stock")
 
     if not name or price is None or stock is None:
-        return jsonify("error": "Missing required fields: name, price, stock"), 400
+        return jsonify({"error": "Missing required fields: name, price, stock"}), 400
     
     new_id = f"p{uuid4().hex[:6]}"
     product = {"id": new_id, "name": name, "price": float(price), "stock": int(stock)}
