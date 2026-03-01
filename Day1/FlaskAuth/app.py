@@ -73,7 +73,7 @@ def login():
     password =data.get("password")
 
     if not email or not password:
-        return jsonify({"error": "email and password are required"})
+        return jsonify({"error": "email and password are required"}), 400
     
     user = next((u for u in USERS if u["email"] == email and u["password"] == password), None)
     if not user:
@@ -82,6 +82,8 @@ def login():
     # Create session
     session["user_id"] = user["id"]
     session["role"] = user["role"]
+
+    return jsonify({"message": "Logged in", "user_id": user["id"], "role": user["role"]}), 200
 
 @app.post("/auth/logout")
 def logout():
@@ -106,6 +108,25 @@ def get_product(product_id: str):
     if not product:
         return jsonify({"error": "Product not found"}), 404
     return jsonify(product), 200
+
+# Only admin can create products (demo of auth + authorization)
+@app.post("/api/products")
+@admin_required
+def create_product():
+    data = request.get_json(silent=True) or {}
+
+    name = data.get("name")
+    price = data.get("price")
+    stock = data.get("stock")
+
+    if not name or price is None or stock is None:
+        return jsonify({"error": "Missing required fields: name, price, stock"}), 400
+    
+    new_id = f"p{uuid4().hex[:6]}"
+    product = {"id": new_id, "name": name, "price": float(price), "stock": int(stock)}
+    PRODUCTS.append(product)
+    return jsonify(product), 201
+
 
 # -------- Cart (requires login) --------
 @app.post("/api/carts")
