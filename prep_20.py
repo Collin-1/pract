@@ -65,4 +65,15 @@ def fizz_buzz(number:int)->str:
         else:
             print(number)
 
-         
+# 6. Find Duplicates
+def find_duplicate(numbers:list)->list:
+    seen = set()
+    duplicates = []
+    for number in numbers:
+        if number in seen:
+            duplicates.append(number)
+        else:
+            seen.add(number)
+    return duplicates
+
+            
