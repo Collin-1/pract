@@ -80,3 +80,10 @@ def find_duplicate(numbers:list)->list:
 def check_palindrome(word:str)->bool:
     return word == word[::-1] if word else False
 
+# 8. Sum of List
+def add(numbers:list)->int:
+    total = 0
+    for number in numbers:
+        total += number
+    return total
+
