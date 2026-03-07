@@ -76,4 +76,7 @@ def find_duplicate(numbers:list)->list:
             seen.add(number)
     return duplicates
 
-            
+# 7. Check Palindrome
+def check_palindrome(word:str)->bool:
+    return word == word[::-1] if word else False
+
