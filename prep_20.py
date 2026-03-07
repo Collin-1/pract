@@ -53,3 +53,16 @@ def remove_duplicate(numbers:list)->list:
             no_duplicates.append(number)
     return no_duplicates
 
+# 5. FizzBuzz
+def fizz_buzz(number:int)->str:
+    for number in range(1, number+1):
+        if (number%3 == 0) and (number%5==0):
+            print("FizzBuzz")
+        elif number%3 == 0:
+            print("Fizz")
+        elif number%5 == 0:
+            print("Buzz")
+        else:
+            print(number)
+
+         
