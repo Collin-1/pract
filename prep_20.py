@@ -94,3 +94,11 @@ def count_characters(word:str)->dict:
         word_count[letter] = word_count.get(letter, 0) + 1
     return word_count
 
+# 10. Two Sum
+def two_sum(numbers:list, target:int)-> tuple:
+    pos = []
+    for i in range(len(numbers)):
+        if (target - numbers[i]) in numbers:
+            pos.append(i)
+    return pos
+
