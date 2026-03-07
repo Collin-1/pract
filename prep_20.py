@@ -102,3 +102,14 @@ def two_sum(numbers:list, target:int)-> tuple:
             pos.append(i)
     return pos
 
+# 11. Find Second Largest Number
+def second_largest(numbers:list)->int:
+    largest = numbers[0]
+    s_largest = numbers[0]
+    for number in numbers:
+        if number >largest:
+            s_largest = largest
+            largest = number
+    return s_largest
+
+print(second_largest([5,1,9,3]))
