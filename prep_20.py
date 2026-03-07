@@ -16,3 +16,16 @@ def find_duplicates(nums):
             seen.add(n)
 
     return list(duplicates)
+
+# Question 3
+# Count vowels in a string.
+
+def count_vowels(s):
+    vowels = "aeiou"
+    count = 0
+
+    for c in s.lower():
+        if c in vowels:
+            count += 1
+
+    return count
