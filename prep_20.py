@@ -87,3 +87,10 @@ def add(numbers:list)->int:
         total += number
     return total
 
+# 9. Count Characters
+def count_characters(word:str)->dict:
+    word_count = {}
+    for letter in word:
+        word_count[letter] = word_count.get(letter, 0) + 1
+    return word_count
+
