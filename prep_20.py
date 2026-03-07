@@ -128,3 +128,17 @@ def missing_number(numbers):
         if numbers[number] != number+1:
             return number+1
         
+# 15. Sort Words Alphabetically
+def sort_words(words:list):
+    return sorted(words)
+
+# 16. Longest Word
+def longest(words:str):
+    words_list = words.split()
+    longest_word = words_list[0]
+    for word in words_list:
+        if len(word) > len(longest_word):
+            longest_word = word
+    return longest_word
+
+
