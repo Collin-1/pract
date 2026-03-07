@@ -117,5 +117,8 @@ def merge(list1:list, list2:list)->list:
     list1.extend(list2)
     return list1
 
-print(merge([1,2],[3,4]))
+
+# 13. Remove Even Numbers
+def remove_even(numbers:list)->list:
+    return[number for number in numbers if number%2 != 0]
 
