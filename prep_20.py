@@ -29,3 +29,27 @@ def count_vowels(s):
             count += 1
 
     return count
+
+# Question 4
+# Find Maximum Number.
+
+def find_max(numbers:list)->int:
+    largest = numbers[0]
+    for number in numbers:
+        if number >largest:
+            largest = number
+
+    return largest
+
+
+# 4 Remove Duplicates From List
+
+def remove_duplicate(numbers:list)->list:
+    seen = set()
+    no_duplicates = []
+    for number in numbers:
+        if number not in seen:
+            seen.add(number)
+            no_duplicates.append(number)
+    return no_duplicates
+
