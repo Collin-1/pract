@@ -112,4 +112,10 @@ def second_largest(numbers:list)->int:
             largest = number
     return s_largest
 
-print(second_largest([5,1,9,3]))
+# 12. Merge Two Lists
+def merge(list1:list, list2:list)->list:
+    list1.extend(list2)
+    return list1
+
+print(merge([1,2],[3,4]))
+
