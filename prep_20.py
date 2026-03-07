@@ -161,4 +161,17 @@ def occurrences_count(nums, target):
             target_count+=1
     return target_count
 
+# 19. Find Common Elements Between Lists
+def common_elements(list1, list2):
+    common = []
+    for i in list1:
+        if i in list2:
+            common.append(i)
+    return common
 
+# 20. Shopping Cart Total
+def cart_total(items):
+    total = 0
+    for item in items:
+        total += item["price"]
+    return total
