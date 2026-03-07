@@ -122,3 +122,9 @@ def merge(list1:list, list2:list)->list:
 def remove_even(numbers:list)->list:
     return[number for number in numbers if number%2 != 0]
 
+# 14. Find Missing Number
+def missing_number(numbers):
+    for number in range(len(numbers)):
+        if numbers[number] != number+1:
+            return number+1
+        
