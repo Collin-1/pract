@@ -141,4 +141,24 @@ def longest(words:str):
             longest_word = word
     return longest_word
 
+# 17. Flatten Nested List
+def flatten(nums):
+    flat_list = []
+    for item in nums:
+        if type(item) == int:
+            flat_list.append(item)
+        else:
+            for i in item:
+                flat_list.append(i)
+
+    return flat_list
+
+# 18. Count Occurrences
+def occurrences_count(nums, target):
+    target_count = 0
+    for i in nums:
+        if i == target:
+            target_count+=1
+    return target_count
+
 
