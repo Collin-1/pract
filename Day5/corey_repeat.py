@@ -90,3 +90,21 @@ def deposit(self, amount):
 
 # They do not see the internal calculation.
 
+# 5️⃣ Class Variables vs Instance Variables
+# Instance variables
+
+# Unique per object.
+
+# self.name
+# self.price
+# Class variables
+
+# Shared across all objects.
+
+# Example:
+
+class Product:
+    tax_rate = 0.15
+
+# Every product shares this value.
+
