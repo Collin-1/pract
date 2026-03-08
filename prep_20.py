@@ -122,3 +122,56 @@ def merge(list1:list, list2:list)->list:
 def remove_even(numbers:list)->list:
     return[number for number in numbers if number%2 != 0]
 
+# 14. Find Missing Number
+def missing_number(numbers):
+    for number in range(len(numbers)):
+        if numbers[number] != number+1:
+            return number+1
+        
+# 15. Sort Words Alphabetically
+def sort_words(words:list):
+    return sorted(words)
+
+# 16. Longest Word
+def longest(words:str):
+    words_list = words.split()
+    longest_word = words_list[0]
+    for word in words_list:
+        if len(word) > len(longest_word):
+            longest_word = word
+    return longest_word
+
+# 17. Flatten Nested List
+def flatten(nums):
+    flat_list = []
+    for item in nums:
+        if type(item) == int:
+            flat_list.append(item)
+        else:
+            for i in item:
+                flat_list.append(i)
+
+    return flat_list
+
+# 18. Count Occurrences
+def occurrences_count(nums, target):
+    target_count = 0
+    for i in nums:
+        if i == target:
+            target_count+=1
+    return target_count
+
+# 19. Find Common Elements Between Lists
+def common_elements(list1, list2):
+    common = []
+    for i in list1:
+        if i in list2:
+            common.append(i)
+    return common
+
+# 20. Shopping Cart Total
+def cart_total(items):
+    total = 0
+    for item in items:
+        total += item["price"]
+    return total
