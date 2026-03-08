@@ -57,3 +57,24 @@ for a in animals:
 
 # Polymorphism allows different objects to respond to the same method in different ways.
 
+# 3️⃣ Encapsulation
+
+# Protecting internal data.
+
+# Use private variables.
+
+# Example:
+
+class BankAccount:
+
+    def __init__(self, balance):
+        self.__balance = balance
+
+# The __ makes it private.
+
+# Access through methods:
+
+def deposit(self, amount):
+    self.__balance += amount
+
+
