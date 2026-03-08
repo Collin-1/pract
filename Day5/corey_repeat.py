@@ -139,3 +139,46 @@ class Product:
     @classmethod
     def total_products(cls):
         return cls.count
+# 8️⃣ Method Overriding
+
+# When a child class replaces a parent method.
+
+# Example:
+
+class Animal:
+    def speak(self):
+        print("Animal sound")
+
+class Dog(Animal):
+
+    def speak(self):
+        print("Woof")
+
+# Dog overrides speak.
+
+# The 4 Core OOP Principles (Memorise for Interviews)
+
+# 1️⃣ Encapsulation
+# Hide internal data.
+
+# 2️⃣ Inheritance
+# Child classes reuse parent code.
+
+# 3️⃣ Polymorphism
+# Same method behaves differently.
+
+# 4️⃣ Abstraction
+# Hide complexity.
+
+# What Junior Developer Interviews Usually Expect
+
+# They expect you to know:
+
+# ✅ Classes
+# ✅ Constructors
+# ✅ Inheritance
+# ✅ Encapsulation
+# ✅ Polymorphism
+# ✅ Method overriding
+# ✅ Composition
+# ✅ __str__
