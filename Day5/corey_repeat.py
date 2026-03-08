@@ -78,3 +78,15 @@ def deposit(self, amount):
     self.__balance += amount
 
 
+# 4️⃣ Abstraction
+
+# Hiding complex logic and showing only what is necessary.
+
+# Example:
+
+# User only calls:
+
+# cart.checkout()
+
+# They do not see the internal calculation.
+
