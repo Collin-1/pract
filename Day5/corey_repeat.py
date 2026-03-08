@@ -108,3 +108,19 @@ class Product:
 
 # Every product shares this value.
 
+# 6️⃣ Static Methods
+
+# Methods that do not need the object.
+
+# Example:
+
+class MathUtils:
+
+    @staticmethod
+    def add(a, b):
+        return a + b
+
+# Usage:
+
+MathUtils.add(3, 4)
+
