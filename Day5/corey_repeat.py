@@ -124,3 +124,18 @@ class MathUtils:
 
 MathUtils.add(3, 4)
 
+# 7️⃣ Class Methods
+
+# Operate on the class itself.
+
+# Example:
+
+class Product:
+    count = 0
+
+    def __init__(self):
+        Product.count += 1
+
+    @classmethod
+    def total_products(cls):
+        return cls.count
