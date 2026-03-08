@@ -19,6 +19,10 @@ class CartItem:
 # composition is a design principle where a class contains objects of other classes as its attributes
 # to build complex functionality, modeling a "has-a" relationship.
 
+# class is a blue print for creating objects
+
+
+
 class ShoppingCart:
     def __init__(self):
         self.items = []
@@ -30,7 +34,7 @@ class ShoppingCart:
     def total_cost(self):
         total = 0
         for item in self.items:
-            total =+ item.total_price()
+            total += item.total_price()
         return total
     
     def show_cart(self):
@@ -60,3 +64,4 @@ user.add_to_cart(keyboard, 1)
 user.cart.show_cart()
 
 user.checkout()
+
