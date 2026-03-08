@@ -27,3 +27,33 @@ dog.bark()   # own method
 # Woof
 
 
+# 2️⃣ Polymorphism
+
+# Different classes can use the same method name but behave differently.
+
+# Example:
+
+class Dog:
+    def speak(self):
+        print("Woof")
+
+class Cat:
+    def speak(self):
+        print("Meow")
+
+# Usage:
+
+animals = [Dog(), Cat()]
+
+for a in animals:
+    a.speak()
+
+# Output
+
+# Woof
+# Meow
+
+# Interview explanation:
+
+# Polymorphism allows different objects to respond to the same method in different ways.
+
